@@ -1,6 +1,6 @@
 {
   "ID":"488F89A05C7D4911B171463A5DB73034",   
-  "ActionKeyword":"sp",                      //switch process
+  "ActionKeyword":"s",                      //switch process
   "Name":"Switch Process",                   //Plugin name
   "Description":"Swith active Process",      //Plugin description
   "Author":"Binlong Li",                     //Plugin Author
