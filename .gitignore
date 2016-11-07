@@ -293,6 +293,7 @@ Wox/Images/Thumbs.db
 Plugins/*
 !Plugins/HelloWorldCSharp
 !Plugins/HelloWorldPython
+!Plugins/SwitchProcess
 !Plugins/Wox.Plugin.Caculator
 !Plugins/Wox.Plugin.Color
 !Plugins/Wox.Plugin.ControlPanel
