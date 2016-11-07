@@ -59,8 +59,10 @@ public static class OpenWindowGetter
 
 namespace SwitchProcess
 {
+    
     public class Main : IPlugin
     {
+        public const int SW_RESTORE = 9;
         public List<Result> Query(Query query)
         {
             List<Result> resList = new List<Result>{ };
@@ -78,7 +80,7 @@ namespace SwitchProcess
                         // after user select the item
 
                         // return false to tell Wox don't hide query window, otherwise Wox will hide it automatically
-                        SetForegroundWindow(windowHandle);
+                        BringToForeground(windowHandle);
                         return true;
                     }
                 });
@@ -94,6 +96,21 @@ namespace SwitchProcess
         {
 
         }
+
+        private void BringToForeground(IntPtr extHandle)
+        {
+            if (IsIconic(extHandle))
+            {
+                ShowWindow(extHandle, SW_RESTORE);
+            }
+            SetForegroundWindow(extHandle);            
+        }
+
+        [DllImport("user32.dll")]
+        public static extern bool IsIconic(IntPtr handle);
+
+        [DllImport("user32.dll")]
+        public static extern bool ShowWindow(IntPtr handle, int nCmdShow);
 
         [DllImport("user32.dll")]
         static extern bool SetForegroundWindow(IntPtr hWnd);
