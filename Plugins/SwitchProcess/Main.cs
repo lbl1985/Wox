@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Wox.Plugin;
 
@@ -75,6 +76,7 @@ namespace SwitchProcess
                 resList.Add(new Result {
                     Title = window.Value,
                     SubTitle = $"{windowHandle}",
+                    IcoPath = GetProcessPath(windowHandle),
                     Action = e =>
                     {
                         // after user select the item
@@ -106,6 +108,14 @@ namespace SwitchProcess
             SetForegroundWindow(extHandle);            
         }
 
+        private string GetProcessPath(IntPtr hwnd)
+        {
+            uint pid = 0;
+            GetWindowThreadProcessId(hwnd, out pid);
+            Process proc = Process.GetProcessById((int)pid);
+            return proc.MainModule.FileName.ToString();
+        }
+
         [DllImport("user32.dll")]
         public static extern bool IsIconic(IntPtr handle);
 
@@ -114,5 +124,10 @@ namespace SwitchProcess
 
         [DllImport("user32.dll")]
         static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern int GetWindowThreadProcessId(IntPtr handle, out uint processId);
+
+
     }
 }
