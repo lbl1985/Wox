@@ -73,19 +73,23 @@ namespace SwitchProcess
                 string windowTitle  = window.Value;
                 IntPtr windowHandle = window.Key;
 
-                resList.Add(new Result {
-                    Title = window.Value,
-                    SubTitle = $"{windowHandle}",
-                    IcoPath = GetProcessPath(windowHandle),
-                    Action = e =>
+                if (windowTitle != "Wox")
+                {
+                    resList.Add(new Result
                     {
-                        // after user select the item
+                        Title = window.Value,
+                        SubTitle = GetProcessPath(windowHandle),
+                        IcoPath = GetProcessPath(windowHandle),
+                        Action = e =>
+                        {
+                            // after user select the item
 
-                        // return false to tell Wox don't hide query window, otherwise Wox will hide it automatically
-                        BringToForeground(windowHandle);
-                        return true;
-                    }
-                });
+                            // return false to tell Wox don't hide query window, otherwise Wox will hide it automatically
+                            BringToForeground(windowHandle);
+                            return true;
+                        }
+                    });
+                }                
             }
 
             //var results1 = _win32s.AsParallel().Select(p => p.Result(query.Search, _context.API));
