@@ -70,16 +70,26 @@ namespace SwitchProcess
 
             foreach (KeyValuePair<IntPtr, string> window in OpenWindowGetter.GetOpenWindows())
             {
-                string windowTitle  = window.Value;
+                string windowTitle = window.Value;
                 IntPtr windowHandle = window.Key;
 
                 if (windowTitle != "Wox")
                 {
+
+                    string ProcessPath = "";
+                    try
+                    {
+                        ProcessPath = GetProcessPath(windowHandle);
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
                     resList.Add(new Result
                     {
                         Title = window.Value,
-                        SubTitle = GetProcessPath(windowHandle),
-                        IcoPath = GetProcessPath(windowHandle),
+                        SubTitle = ProcessPath,
+                        IcoPath = ProcessPath,
                         Action = e =>
                         {
                             // after user select the item
@@ -89,8 +99,9 @@ namespace SwitchProcess
                             return true;
                         }
                     });
-                }                
+                }
             }
+
 
             //var results1 = _win32s.AsParallel().Select(p => p.Result(query.Search, _context.API));
             var resList1 = resList.Where(p => p.Title.ToLower().Contains(query.Search.ToLower())).ToList();
