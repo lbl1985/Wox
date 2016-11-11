@@ -294,6 +294,7 @@ Plugins/*
 !Plugins/HelloWorldCSharp
 !Plugins/HelloWorldPython
 !Plugins/SwitchProcess
+!Plugins/bookmarks
 !Plugins/Wox.Plugin.Caculator
 !Plugins/Wox.Plugin.Color
 !Plugins/Wox.Plugin.ControlPanel

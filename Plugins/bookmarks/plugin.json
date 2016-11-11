@@ -1,0 +1,12 @@
+{
+  "ID":"{62600A4FDB3C48A8A5B8D3D2DA5BA6DE}",   
+  "ActionKeyword":"b",                      //switch process
+  "Name":"Open Bookmark",                   //Plugin name
+  "Description":"Open Chrome Bookmark",      //Plugin description
+  "Author":"Binlong Li",                     //Plugin Author
+  "Version":"1.0.0",                         //Plugin version，must be x.x.x format
+  "Language":"csharp",                       //Plugin language，we support csharp,python and executable now
+  "Website":"http://dragonistweb.com",       //Plugin website or author website
+  "IcoPath": "app.png",                      //Plugin icon, relative path to the pluign folder
+  "ExecuteFileName":"bookmarks.dll"      //Execution entry. Dll name for c# plugin, and python file for python plugin
+}
