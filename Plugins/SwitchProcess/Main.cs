@@ -102,10 +102,7 @@ namespace SwitchProcess
                 }
             }
 
-
-            //var results1 = _win32s.AsParallel().Select(p => p.Result(query.Search, _context.API));
             var resList1 = resList.Where(p => p.Title.ToLower().Contains(query.Search.ToLower())).ToList();
-            //resList = resList.Select()
             return resList1;
         }
 
